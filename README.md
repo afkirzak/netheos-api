@@ -34,11 +34,11 @@ Une fois que le war est déployé sur Tomcat, vous pouvez tester les 3 user stor
 
 La requête à utiliser pour tester cette user story :
 
-> URI: /private/faq/save
-> HTTP Method: POST
-> Basic Authentication: admin/password
-> Body: JSON Object
-> {
+    URI: /private/faq/save
+    HTTP Method: POST
+    Basic Authentication: admin/password
+    Body: JSON Object
+    {
 	"question":"What are the three V's of Big Data?",
 	"answer":"Volume, Velocity and Variety",
 	"tags": ["Big data", "Volume", "Velocity", "Variety"]
@@ -52,9 +52,9 @@ Cette user story renvoie l'objet inséré.
 
 La requête à utiliser pour tester cette user story :
 
-> URI: /private/faq/list
-> HTTP Method: GET
-> Basic Authentication: admin/password
+    URI: /private/faq/list
+    HTTP Method: GET
+    Basic Authentication: admin/password
 
 Cette user story renvoie la liste des questions / réponses.
 
@@ -64,10 +64,10 @@ Cette user story renvoie la liste des questions / réponses.
 
 La requête à utiliser pour tester cette user story :
 
-> URI: /public/faq/search
-> HTTP Method: GET
-> Basic Authentication: afkir/password
-> Parameters: search=HDFS
+    URI: /public/faq/search
+    HTTP Method: GET
+    Basic Authentication: afkir/password
+    Parameters: search=HDFS
 
 Cette user story renvoie la liste des questions / réponses contenant la valeur du paramètre `search`.
 
