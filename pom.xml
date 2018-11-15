@@ -6,7 +6,6 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>netheos-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>netheos-api</name>
@@ -64,6 +63,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
