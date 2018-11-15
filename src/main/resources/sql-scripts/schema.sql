@@ -1,0 +1,19 @@
+CREATE TABLE role (
+	id bigint(20) NOT NULL AUTO_INCREMENT,
+	role_name varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE user (
+	id bigint(20) NOT NULL AUTO_INCREMENT,
+	username varchar(255) NOT NULL,
+	password varchar(255) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE user_role (
+	user_id bigint(20) NOT NULL,
+	role_id bigint(20) NOT NULL,
+	CONSTRAINT fk1 FOREIGN KEY (user_id) REFERENCES user (id),
+	CONSTRAINT fk2 FOREIGN KEY (role_id) REFERENCES role (id)
+);
