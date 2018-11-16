@@ -53,4 +53,18 @@ public class FAQ {
 	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
+
+	public boolean equals(Object o) {
+
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof FAQ)) {
+			return false;
+		}
+
+		FAQ c = (FAQ) o;
+		return this.getQuestion().equals(c.getQuestion()) && this.getAnswer().equals(c.getAnswer())
+				&& this.getTags().equals(c.getTags());
+	}
 }
