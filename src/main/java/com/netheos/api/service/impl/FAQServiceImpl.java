@@ -49,7 +49,7 @@ public class FAQServiceImpl implements FAQService {
 	public List<String> search(String text) {
 
 		SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(QueryBuilders.multiMatchQuery(text)
-				.field("question").field("answer").type(MultiMatchQueryBuilder.Type.BEST_FIELDS)).build();
+				.field("question").field("answer").type(MultiMatchQueryBuilder.Type.CROSS_FIELDS)).build();
 
 		List<String> answersList = null;
 
