@@ -72,7 +72,7 @@ public class NetheosApiApplicationTests {
 
 		MvcResult mvcResult = mvc
 				.perform(
-						post("/private/faq/save").content(new ObjectMapper().writeValueAsString(faqExpected))
+						post("/private/faq").content(new ObjectMapper().writeValueAsString(faqExpected))
 								.contentType(MediaType.APPLICATION_JSON).with(SecurityMockMvcRequestPostProcessors
 										.user("afkir").password("password").roles("ADMIN")))
 				.andExpect(status().isOk()).andReturn();
@@ -90,7 +90,7 @@ public class NetheosApiApplicationTests {
 	@Test
 	public void userstory1_should_fail() throws Exception {
 
-		mvc.perform(post("/private/faq/save").content(new ObjectMapper().writeValueAsString(faqExpected))
+		mvc.perform(post("/private/faq").content(new ObjectMapper().writeValueAsString(faqExpected))
 				.contentType(MediaType.APPLICATION_JSON)
 				.with(SecurityMockMvcRequestPostProcessors.user("afkir").password("password").roles("USER")))
 				.andExpect(status().is(403));
@@ -103,7 +103,7 @@ public class NetheosApiApplicationTests {
 				.setSource(new ObjectMapper().writeValueAsString(faqExpected), XContentType.JSON).execute();
 
 		MvcResult mvcResult = mvc
-				.perform(get("/private/faq/list")
+				.perform(get("/private/faq")
 						.with(SecurityMockMvcRequestPostProcessors.user("afkir").password("password").roles("ADMIN")))
 				.andExpect(status().isOk()).andReturn();
 
@@ -117,7 +117,7 @@ public class NetheosApiApplicationTests {
 	@Test
 	public void userstory2_should_fail() throws Exception {
 
-		mvc.perform(get("/private/faq/list")
+		mvc.perform(get("/private/faq")
 				.with(SecurityMockMvcRequestPostProcessors.user("afkir").password("password").roles("USER")))
 				.andExpect(status().is(403));
 	}
@@ -128,7 +128,7 @@ public class NetheosApiApplicationTests {
 		client.prepareIndex("api", "faq")
 				.setSource(new ObjectMapper().writeValueAsString(faqExpected), XContentType.JSON).execute();
 
-		MvcResult mvcResult = mvc.perform(get("/public/faq/search")
+		MvcResult mvcResult = mvc.perform(get("/public/faq")
 				.with(SecurityMockMvcRequestPostProcessors.user("afkir").password("password").roles("USER"))
 				.param("search", "question")).andExpect(status().isOk()).andReturn();
 
@@ -142,7 +142,7 @@ public class NetheosApiApplicationTests {
 	@Test
 	public void userstory3_should_fail() throws Exception {
 
-		mvc.perform(get("/public/faq/search").param("search", "question")).andExpect(status().isUnauthorized());
+		mvc.perform(get("/public/faq").param("search", "question")).andExpect(status().isUnauthorized());
 	}
 
 	@AfterClass

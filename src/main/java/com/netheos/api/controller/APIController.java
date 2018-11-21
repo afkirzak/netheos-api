@@ -18,17 +18,17 @@ public class APIController {
 	@Autowired
     private FAQService faqService;
 	
-	@RequestMapping(value = "/private/faq/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/private/faq", method = RequestMethod.POST)
     public FAQ save(@RequestBody FAQ faq) {
         return faqService.save(faq);
     }
 	
-	@RequestMapping(value = "/private/faq/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/private/faq", method = RequestMethod.GET)
     public List<FAQ> list() {
         return faqService.list();
     }
 	
-	@RequestMapping(value = "/public/faq/search", method = RequestMethod.GET)
+	@RequestMapping(value = "/public/faq", method = RequestMethod.GET)
     public List<String> search(@RequestParam("search") String txt) {
         return faqService.search(txt);
     }
